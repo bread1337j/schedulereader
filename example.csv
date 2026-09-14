@@ -1,0 +1,13 @@
+classs1,10:35,11:40,Room 1
+class2,11:50,13:30, Room 2
+class3,10:35,12:15
+class4,12:25,14:05
+class5,15:00,16:40 
+SCHEDULE
+
+class1,class2
+class3,class4
+class3,class2
+class1
+class3,class4,class5
+
