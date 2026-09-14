@@ -183,10 +183,21 @@ int main(int argc, char** argv){
 			if(c.other != NULL){
 				printf("-%s", c.other);
 			}
-			printf(",");
-			printf("time until end: %02d:%02d", c.endMin - currentMin-1, 60-local->tm_sec); 
+			printf(", ");
+			int minFlag = 1;
+			if(local->tm_sec == 0){
+				minFlag = 0;
+			}
+			if(currentMin < c.startMin){
+				printf("time until start: %02d:%02d:%02d ", (c.startMin - currentMin-minFlag)/60, (c.startMin - currentMin-minFlag)%60, (minFlag)? 60-local->tm_sec:0); 
+			}else{
+				printf("time until end: %02d:%02d:%02d ", (c.endMin - currentMin-minFlag)/60, (c.endMin - currentMin-minFlag)%60, (minFlag)? 60-local->tm_sec:0); 
+			}
 			if(i < d.count-1){
 				printf("next: %s", d.items[i+1].name);
+				if(d.items[i+1].other != NULL){
+					printf("-%s", d.items[i+1].other);
+				}
 			}
 			return 0;
 			
